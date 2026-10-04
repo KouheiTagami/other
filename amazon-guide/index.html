@@ -47,6 +47,21 @@ ul.check small { display: block; color: var(--muted); font-size: .85rem; line-he
 a { color: var(--accent); font-weight: 700; overflow-wrap: anywhere; }
 a.go { display: inline-block; background: var(--accent); color: var(--accent-ink); text-decoration: none; padding: 8px 18px; border-radius: 6px; }
 a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.svc-list { display: flex; flex-direction: column; gap: 10px; }
+.svc { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.svc header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; margin-bottom: 6px; }
+.svc h3 { margin: 0; font-size: 1rem; min-width: 0; }
+.pill { font-size: .75rem; font-weight: 700; padding: 1px 10px; border-radius: 99px; white-space: nowrap; }
+.pill.must { background: var(--accent); color: var(--accent-ink); }
+.pill.rec { background: var(--accent-soft); color: var(--accent); }
+.pill.opt { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+.svc dl { display: grid; grid-template-columns: 6.5em 1fr; gap: 4px 10px; margin: 0; font-size: .92rem; }
+.svc dt { color: var(--muted); font-size: .85rem; padding-top: 2px; }
+.svc dd { margin: 0; min-width: 0; }
+@media (max-width: 420px) { .svc dl { grid-template-columns: 1fr; } .svc dd { margin-bottom: 6px; } }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+details summary { cursor: pointer; font-weight: 700; }
+details p { margin: 8px 0 0; font-size: .95rem; }
 footer { color: var(--muted); font-size: .85rem; display: flex; flex-direction: column; gap: 6px; }
 footer button { align-self: flex-start; font: inherit; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 4px 12px; cursor: pointer; }
 @media (max-width: 420px) { section { grid-template-columns: 1fr; } .no { margin-bottom: 4px; } }
@@ -134,6 +149,88 @@ footer button { align-self: flex-start; font: inherit; background: var(--surface
         <li><label><input type="checkbox" id="c-a3"><span><strong>スマホに「Amazonセラーアプリ」を入れる</strong><small>商品のバーコードをカメラで読むだけで、売っていい商品か、手数料がいくらかがわかる便利なアプリです。</small></span></label></li>
         <li><label><input type="checkbox" id="c-a4"><span><strong>夫に「管理画面に入れた」と伝える</strong><small>次は夫が、せどり帳とAmazonをつなぐ設定（無料）をします。おつかれさまでした！</small></span></label></li>
       </ul>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="no">＋</div>
+    <div class="body">
+      <h2>使うサービスの一覧</h2>
+      <p class="lead">知らないサービスがたくさん出てくると不安になりますよね。ここに全部まとめました。<b>ここにないサービスに申し込むことはありません。</b>知らないところからメールや電話が来ても、ここにない名前なら相手にしなくて大丈夫です。</p>
+      <div class="svc-list">
+        <article class="svc">
+          <header><h3>Amazon出品サービス（大口出品）</h3><span class="pill must">必須</span></header>
+          <dl>
+            <dt>何をする</dt><dd>Amazonで商品を売るためのお店の登録です。このガイドで登録するのはこれです。</dd>
+            <dt>お金</dt><dd>月4,900円＋税。ほかに売れたときの手数料（売上の1割くらい）。</dd>
+            <dt>やめるとき</dt><dd>管理画面からいつでも解約できます。違約金はありません。</dd>
+          </dl>
+        </article>
+        <article class="svc">
+          <header><h3>FBA（Amazonの倉庫）</h3><span class="pill must">必須</span></header>
+          <dl>
+            <dt>何をする</dt><dd>商品をAmazonの倉庫に送っておくと、売れたときの梱包・発送・お客さん対応・返品の受付を全部Amazonがやってくれます。家から直接お客さんに送ることはありません。</dd>
+            <dt>お金</dt><dd>売れた1個ごとに数百円と、倉庫の保管料（小さい商品なら1個月数円〜数十円）。</dd>
+            <dt>申し込み</dt><dd>出品サービスに入っていれば追加の申し込みは不要です。</dd>
+          </dl>
+        </article>
+        <article class="svc">
+          <header><h3>Amazonセラーアプリ</h3><span class="pill rec">入れておくと便利</span></header>
+          <dl>
+            <dt>何をする</dt><dd>Amazon公式のスマホアプリ。バーコードを読むだけで、売っていい商品か、手数料がいくらかがわかります。</dd>
+            <dt>お金</dt><dd>無料。</dd>
+          </dl>
+        </article>
+        <article class="svc">
+          <header><h3>せどり帳</h3><span class="pill must">必須</span></header>
+          <dl>
+            <dt>何をする</dt><dd>夫が作った仕入れのお手伝いツール。楽天の商品を毎朝集めて、利益が出そうなものを教えてくれます。</dd>
+            <dt>お金</dt><dd>無料。家のパソコンの中だけで動きます。</dd>
+            <dt>安心ポイント</dt><dd>勝手に買い物や出品をすることはありません。買うかどうかは必ずあなたが決めます。</dd>
+          </dl>
+        </article>
+        <article class="svc">
+          <header><h3>楽天市場</h3><span class="pill must">必須</span></header>
+          <dl>
+            <dt>何をする</dt><dd>仕入れ先です。ふだんの買い物と同じように買って、ポイントをもらいます。</dd>
+            <dt>お金</dt><dd>商品代だけ。仕入れ用に、あなた名義の楽天カードが1枚あると帳簿が楽になります。</dd>
+          </dl>
+        </article>
+        <article class="svc">
+          <header><h3>住所を借りるサービス（バーチャルオフィス）</h3><span class="pill opt">入らなくてもOK</span></header>
+          <dl>
+            <dt>何をする</dt><dd>Amazonのお店のページに出る住所を、自宅ではなく借りた住所にできます。郵便物を家に転送してくれるプランもあります。</dd>
+            <dt>お金</dt><dd>月1,000〜2,000円くらい。</dd>
+            <dt>いつ決める</dt><dd>審査が通ったあとで大丈夫。入るかどうかはふたりで相談して決めます。</dd>
+          </dl>
+        </article>
+        <article class="svc">
+          <header><h3>メルカリ</h3><span class="pill opt">あとで・必要なときだけ</span></header>
+          <dl>
+            <dt>何をする</dt><dd>Amazonで2〜3か月売れなかった商品だけを出す、売れ残りの逃がし先です。毎日やることはありません。</dd>
+            <dt>お金</dt><dd>売れたときの手数料（売上の1割）だけ。</dd>
+          </dl>
+        </article>
+        <article class="svc">
+          <header><h3>困ったときの相談先</h3><span class="pill rec">無料</span></header>
+          <dl>
+            <dt>税金のこと</dt><dd>税務署の無料相談、地域の商工会。確定申告の時期（2〜3月）より前に行くと空いています。</dd>
+            <dt>Amazonのこと</dt><dd>セラーセントラルの「ヘルプ」から問い合わせ。文字（メール・チャット）で聞けるので、話さなくて大丈夫です。</dd>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="no">？</div>
+    <div class="body">
+      <h2>よくある不安</h2>
+      <details><summary>損をしたらどうしよう</summary><p>お試し期間は仕入れを合計5〜10万円までにする約束です。売れ残っても、メルカリで買った値段近くで売れることが多いので、全額なくなることはまずありません。1つの商品を一度にたくさん買わないのもルールです。</p></details>
+      <details><summary>電話がかかってきたり、話さないといけない場面はある？</summary><p>基本はありません。Amazonとのやりとりはメールと管理画面です。お客さんへの発送や問い合わせもAmazonが対応します。登録のときにビデオ通話があった場合も、身分証を見せる短い確認です。</p></details>
+      <details><summary>操作をまちがえたら取り返しがつかない？</summary><p>出品の値段や数はあとから何度でも直せます。お金が動くのは「楽天で買う」ときだけなので、そこだけ落ち着いて確認すれば大丈夫。迷ったら手を止めて、スクショを夫に送ってください。</p></details>
+      <details><summary>あやしいメールが来た</summary><p>Amazonを名乗るにせメールがよくあります。メールのリンクは押さずに、いつもの方法でセラーセントラルを開いて、お知らせが本当にあるか確認してください。パスワードやカード番号をメールで聞かれることはありません。</p></details>
+      <details><summary>つらくなったらやめられる？</summary><p>いつでもやめられます。大口出品は月単位の解約、在庫はAmazonから返送してもらうかメルカリで売り切ればおしまいです。体調が最優先です。</p></details>
     </div>
   </section>
 
