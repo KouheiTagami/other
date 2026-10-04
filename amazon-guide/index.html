@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Amazon出品 はじめの一歩</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@700&display=swap">
+<style>
+/* 1カラムの手順書。左に工程番号の罫線、各項目はチェックできる付箋 */
+:root {
+  --bg: #f5f6f3; --surface: #ffffff; --ink: #1d2421; --muted: #5f6b66; --line: #dde2dd;
+  --accent: #1f6f5c; --accent-ink: #ffffff; --accent-soft: #e2efe9;
+  --warn: #8a5a00; --warn-soft: #fbefd6;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  --font-display: "Zen Maru Gothic", "Zen Kaku Gothic New", "Yu Gothic UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141917; --surface: #1c2320; --ink: #e6ece9; --muted: #9aa7a1; --line: #2f3834;
+  --accent: #5cc2a4; --accent-ink: #0d1412; --accent-soft: #1e3a31; --warn: #f0b84e; --warn-soft: #3a2e15; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141917; --surface: #1c2320; --ink: #e6ece9; --muted: #9aa7a1; --line: #2f3834;
+  --accent: #5cc2a4; --accent-ink: #0d1412; --accent-soft: #1e3a31; --warn: #f0b84e; --warn-soft: #3a2e15; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.75 var(--font-body); margin: 0; }
+.wrap { max-width: 720px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: flex; flex-direction: column; gap: 28px; }
+header h1 { font-family: var(--font-display); font-size: 1.7rem; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; }
+header p { margin: 0; color: var(--muted); }
+.progress { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; background: var(--bg); padding-block: 8px; display: flex; align-items: center; gap: 12px; font-size: .9rem; color: var(--muted); }
+.bar { flex: 1; height: 8px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.progress b { color: var(--ink); font-variant-numeric: tabular-nums; }
+section { display: grid; grid-template-columns: 40px 1fr; gap: 0 14px; }
+.no { font-family: var(--font-display); font-size: 1.1rem; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+section > .body { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+section h2 { font-size: 1.2rem; margin: 6px 0 0; text-wrap: balance; }
+.lead { margin: 0; color: var(--muted); font-size: .95rem; }
+ul.check { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+ul.check label { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; cursor: pointer; }
+ul.check input { width: 20px; height: 20px; margin: 4px 0 0; accent-color: var(--accent); }
+ul.check input:checked + span { color: var(--muted); }
+ul.check input:checked + span strong { text-decoration: line-through; }
+ul.check small { display: block; color: var(--muted); font-size: .85rem; line-height: 1.6; }
+.note { background: var(--warn-soft); color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: .92rem; }
+.note b { color: var(--warn); }
+a { color: var(--accent); font-weight: 700; overflow-wrap: anywhere; }
+a.go { display: inline-block; background: var(--accent); color: var(--accent-ink); text-decoration: none; padding: 8px 18px; border-radius: 6px; }
+a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+footer { color: var(--muted); font-size: .85rem; display: flex; flex-direction: column; gap: 6px; }
+footer button { align-self: flex-start; font: inherit; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 4px 12px; cursor: pointer; }
+@media (max-width: 420px) { section { grid-template-columns: 1fr; } .no { margin-bottom: 4px; } }
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>Amazonで売る準備をはじめよう</h1>
+    <p>楽天でポイントをもらいながら仕入れて、Amazonの倉庫（FBA）から売る。そのための最初の手続きをまとめました。電話はなく、家でスマホとパソコンだけで進められます。</p>
+    <p>一度に全部やらなくて大丈夫です。終わったところにチェックを入れておけば、続きからできます（チェックはこのスマホ・パソコンに残ります）。</p>
+  </header>
+
+  <div class="progress" aria-live="polite"><span>進み具合</span><div class="bar"><i id="bar"></i></div><b id="count">0 / 0</b></div>
+
+  <section>
+    <div class="no">1</div>
+    <div class="body">
+      <h2>はじめる前に、ふたりで確認</h2>
+      <ul class="check">
+        <li><label><input type="checkbox" id="c-fuyou"><span><strong>扶養の条件を確認した（夫の担当）</strong><small>夫が会社の健康保険に「個人事業の収入は、売上で判定しますか、経費を引いた後ですか」と聞いておきます。答えによって始め方が変わるので、ここが終わってから登録しましょう。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-meigi"><span><strong>あなたの名義で登録する</strong><small>このお仕事は、あなたのお店として始めます。身分証・クレジットカード・銀行口座・メールアドレスは、すべてあなたの名前のものをそろえます。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-store"><span><strong>お店の名前（ストア名）を決めた</strong><small>お客さんに表示される名前です。あとから変えられるので、気軽に決めて大丈夫です。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-addr"><span><strong>住所と名前がお店のページに表示されることを知っておく</strong><small>法律（特定商取引法）のきまりで、個人のお店は出品者情報に名前と住所が出ます。自宅の住所を出したくなければ、登録する前にふたりで相談しましょう（月1,000円くらいで借りられる住所サービスもあります）。</small></span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="no">2</div>
+    <div class="body">
+      <h2>手元にそろえるもの</h2>
+      <p class="lead">先に写真を撮っておくと、登録の途中で手が止まりません。スマホで撮った写真をそのまま使えます。</p>
+      <ul class="check">
+        <li><label><input type="checkbox" id="c-mail"><span><strong>メールアドレス</strong><small>ふだんAmazonで買い物しているアカウントとは別のメールアドレスにしておくと、あとで混ざらず楽です。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-tel"><span><strong>携帯電話</strong><small>本人確認の数字（認証コード）がショートメールで届きます。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-id"><span><strong>顔写真付きの身分証（表と裏の写真）</strong><small>マイナンバーカード、運転免許証、パスポートのどれか。期限が切れていないもの。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-meisai"><span><strong>取引明細書</strong><small>クレジットカードかネットバンキングの明細です。半年（180日）以内のもので、<b>名前と住所が両方のっている</b>ものを選んでください。ネットからPDFで取れることが多いです。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-card"><span><strong>クレジットカード</strong><small>毎月の利用料（4,900円＋税）の支払いに使います。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-bank"><span><strong>銀行口座</strong><small>売れたお金が振り込まれる口座です。支店名と口座番号がわかる通帳かキャッシュカードを手元に。</small></span></label></li>
+      </ul>
+      <div class="note"><b>ここだけ注意：</b>入力する住所は、明細書に書かれている住所と<b>まったく同じ書き方</b>にしてください。「1-2-3」か「1丁目2番3号」か、マンション名や部屋番号まで合わせます。審査で一番止まりやすいところです。</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="no">3</div>
+    <div class="body">
+      <h2>登録する（30分〜1時間くらい）</h2>
+      <p><a class="go" href="https://sell.amazon.co.jp/" target="_blank" rel="noopener">Amazon出品サービスを開く</a></p>
+      <ul class="check">
+        <li><label><input type="checkbox" id="c-s1"><span><strong>「さっそく始める」を押し、メールアドレスでアカウントを作る</strong></span></label></li>
+        <li><label><input type="checkbox" id="c-s2"><span><strong>出品の形態は「大口出品」、事業の種類は「個人」を選ぶ</strong><small>「小口」もありますが、夫が作った仕入れツール（せどり帳）とつなげるのは「大口」だけです。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-s3"><span><strong>氏名・住所・電話番号を入力し、SMS認証をする</strong></span></label></li>
+        <li><label><input type="checkbox" id="c-s4"><span><strong>クレジットカードと銀行口座を登録する</strong></span></label></li>
+        <li><label><input type="checkbox" id="c-s5"><span><strong>ストア名を入力し、身分証と取引明細書をアップロードする</strong></span></label></li>
+        <li><label><input type="checkbox" id="c-s6"><span><strong>本人確認の案内に従う</strong><small>身分証をカメラに見せる短いビデオ通話や、ハガキでの住所確認を頼まれることがあります。予約の時間は自分で選べることが多いので、体調のいい時間にしましょう。困ったら夫に横にいてもらって大丈夫です。</small></span></label></li>
+      </ul>
+      <p class="lead">画面の言葉は少し変わっていることがあります。迷ったら、上の流れに近いものを選べば大丈夫。わからなければ、その画面のスクショを夫に送ってください。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="no">4</div>
+    <div class="body">
+      <h2>審査を待つ（数日〜2週間）</h2>
+      <p class="lead">ここはAmazonが確認してくれる時間です。のんびり待ちましょう。</p>
+      <ul class="check">
+        <li><label><input type="checkbox" id="c-w1"><span><strong>Amazonからのメールを毎日確認する</strong><small>「書類をもう一度出してください」と来ることがあります。早めに出せば早く終わります。迷惑メールのフォルダものぞいてみてください。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-w2"><span><strong>せどり帳で、楽天の候補をながめて慣れておく</strong><small>この間はまだ買わなくて大丈夫。どんな商品が並ぶのか見ておくだけで十分です。</small></span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="no">5</div>
+    <div class="body">
+      <h2>審査が通ったら、あと少し</h2>
+      <p><a href="https://sellercentral.amazon.co.jp/" target="_blank" rel="noopener">セラーセントラル（出品者用の管理画面）</a></p>
+      <ul class="check">
+        <li><label><input type="checkbox" id="c-a1"><span><strong>2段階認証を設定する</strong><small>ほかの人に勝手にログインされないための設定です。一番はじめにやっておきます。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-a2"><span><strong>税務情報の入力（案内が出たら）</strong><small>「日本に住んでいる個人」として答えればOKです。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-a3"><span><strong>スマホに「Amazonセラーアプリ」を入れる</strong><small>商品のバーコードをカメラで読むだけで、売っていい商品か、手数料がいくらかがわかる便利なアプリです。</small></span></label></li>
+        <li><label><input type="checkbox" id="c-a4"><span><strong>夫に「管理画面に入れた」と伝える</strong><small>次は夫が、せどり帳とAmazonをつなぐ設定（無料）をします。おつかれさまでした！</small></span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>かかるお金：月4,900円＋税。合わなければいつでもやめられます。最初の2〜3か月はお試し期間で、仕入れは合計5〜10万円までにしておく約束です。</span>
+    <button type="button" id="reset">チェックをすべて外す</button>
+  </footer>
+</div>
+
+<script>
+const KEY = 'oguchi-guide-v1';
+const boxes = [...document.querySelectorAll('ul.check input')];
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch {}
+function update() {
+  const done = boxes.filter((b) => b.checked).length;
+  document.getElementById('count').textContent = `${done} / ${boxes.length}`;
+  document.getElementById('bar').style.width = `${(done / boxes.length) * 100}%`;
+}
+boxes.forEach((b) => {
+  b.checked = !!saved[b.id];
+  b.addEventListener('change', () => {
+    saved[b.id] = b.checked;
+    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch {}
+    update();
+  });
+});
+const resetBtn = document.getElementById('reset');
+resetBtn.addEventListener('click', () => {
+  if (resetBtn.dataset.armed !== '1') { resetBtn.dataset.armed = '1'; resetBtn.textContent = 'もう一度押すと外します'; return; }
+  boxes.forEach((b) => { b.checked = false; }); saved = {};
+  try { localStorage.removeItem(KEY); } catch {}
+  resetBtn.dataset.armed = ''; resetBtn.textContent = 'チェックをすべて外す'; update();
+});
+update();
+</script>
+</body>
+</html>
